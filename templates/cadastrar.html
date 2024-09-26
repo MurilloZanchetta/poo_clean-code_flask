@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Cadastrar Pessoa{% endblock %}
+
+{% block content %}
+    <h1>Cadastrar Nova Pessoa</h1>
+    
+    <form method="POST" class="form-cadastrar">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            <label for="nome">{{ form.nome.label }}</label>
+            {{ form.nome(id="nome") }}
+            {% if form.nome.errors %}
+                <span class="error">{{ form.nome.errors[0] }}</span>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="idade">{{ form.idade.label }}</label>
+            {{ form.idade(id="idade") }}
+            {% if form.idade.errors %}
+                <span class="error">{{ form.idade.errors[0] }}</span>
+            {% endif %}
+        </div>
+
+        <button type="submit" class="btn">Cadastrar</button>
+    </form>
+
+    <a href="{{ url_for('index') }}" class="btn">Voltar para Lista</a>
+{% endblock %}

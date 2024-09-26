@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Lista de Pessoas{% endblock %}
+
+{% block content %}
+    <h1>Lista de Pessoas Cadastradas</h1>
+
+    <ul class="pessoas-lista">
+        {% for pessoa in pessoas %}
+            <li>
+                <span>{{ pessoa.nome }} - {{ pessoa.idade }} anos</span>
+                <a href="{{ url_for('deletar', id=pessoa.id) }}" class="btn-delete">Deletar</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('cadastrar') }}" class="btn">Cadastrar Nova Pessoa</a>
+{% endblock %}
